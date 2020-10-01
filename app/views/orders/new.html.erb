@@ -1,11 +1,17 @@
-<h1><%= @title %></h1>
-
 <%= form_for :order, url: orders_path do |t| %>
   <p>
-    First Name<br>
-    <%= t.text_field :name %>
+    <%= t.label :login %>:<br>
+    <%= t.text_field :login %>
   </p>
   <p>
-    <%= t.submit %>
+    <%= t.label :phone %>:<br>
+    <%= t.phone_field :phone, :placeholder => "380991234567" %>
+  </p>
+  <p>
+    <%= t.label :description %>:<br>
+    <%= t.text_area :description %>
+  </p>
+  <p>
+    <%= t.submit "Submit" %>
   </p>
 <% end %>

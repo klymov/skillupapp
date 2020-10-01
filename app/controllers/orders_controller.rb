@@ -6,14 +6,20 @@ class OrdersController < ApplicationController
 
   def new
     @title = 'New Order'
+    # @person = Person.new
+  end
+  
+  def show
+    @order = Order.find(params[:id])
   end
 
-  # def create
-  #   # render 
-  # end
+  def create
+    #render plain: params[:order].inspect 
+    @order = Order.new(order_params)
+    @order.save
+    redirect_to @order
+  end
 
-  # def show
-  # end
 
   # def edit
   # end
@@ -23,4 +29,11 @@ class OrdersController < ApplicationController
 
   # def destroy
   # end
+
+  private
+  def order_params
+    params.require(:order).permit(:login, :phone, :description)
+  end
+
+
 end
