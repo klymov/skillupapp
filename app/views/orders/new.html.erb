@@ -1,0 +1,11 @@
+<h1><%= @title %></h1>
+
+<%= form_for :order, url: orders_path do |t| %>
+  <p>
+    First Name<br>
+    <%= t.text_field :name %>
+  </p>
+  <p>
+    <%= t.submit %>
+  </p>
+<% end %>

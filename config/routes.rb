@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'order/index'
-  # get 'welcome/index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :orders
+  root 'orders#index'
 
-  #root 'order#index'
+  # get 'index' => 'orders/index'
+  get 'orders/index'
+  
+  resources :orders
 end

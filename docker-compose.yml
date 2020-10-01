@@ -1,0 +1,32 @@
+version: '3.8'
+
+# read about named volumes
+
+# gem pry - for debugging
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/app
+      - gems:/usr/local/bundle:cached
+    ports:
+      - 3000:3000
+    env_file: .env
+    links:
+      - db
+
+  db:
+    image: postgres:13
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    env_file: .env
+    ports:
+      - 5433:5432
+
+volumes:
+  gems: null
+  pg-data: null
