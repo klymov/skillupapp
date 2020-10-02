@@ -2,38 +2,55 @@ class OrdersController < ApplicationController
   @title = ''
 
   def index
+    @title = 'All orders'
+    @order = Order.all
   end
 
   def new
     @title = 'New Order'
-    # @person = Person.new
+    @order = Order.new
   end
   
   def show
     @order = Order.find(params[:id])
+    @title = "Order N #{@order.id}" if @order
   end
-
+  
   def create
-    #render plain: params[:order].inspect 
+    @title = 'New Order'
     @order = Order.new(order_params)
-    @order.save
-    redirect_to @order
+    
+    if(@order.save)
+      redirect_to @order
+    else
+      render 'new'
+    end
+  end
+  
+  def edit
+    @order = Order.find(params[:id])
+    @title = "Edit Order N #{@order.id}" if @order
   end
 
+  def update
+    @order = Order.find(params[:id])
+    @title = "Edit Order N #{@order.id}" if @order
 
-  # def edit
-  # end
+    if(@order.update(order_params))
+      redirect_to @order
+    else
+      render 'edit'
+    end
+  end
 
-  # def update
-  # end
-
-  # def destroy
-  # end
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    redirect_to orders_path
+  end
 
   private
   def order_params
     params.require(:order).permit(:login, :phone, :description)
   end
-
-
 end

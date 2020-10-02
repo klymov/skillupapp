@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'orders#index'
+  root 'orders#index', as: 'home'
 
   # get 'index' => 'orders/index'
   get 'orders/index'

@@ -1,3 +1,6 @@
 <h1><%= @order.login %></h1>
 <h2><%= @order.phone %></h2>
 <p><%= @order.description %></p>
+<hr>
+<%= link_to "Edit order", edit_order_path(@order), :class => 'btn btn-warning' %>
+<%= link_to "Delete order", order_path(@order), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
