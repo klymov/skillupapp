@@ -1,32 +1,27 @@
 class OrdersController < ApplicationController
-  @title = ''
-
   def index
-    @title = 'All orders'
     @order = Order.all
   end
 
   def new
-    @title = 'New Order'
     @order = Order.new
   end
-  
+
   def show
     @order = Order.find(params[:id])
     @title = "Order N #{@order.id}" if @order
   end
-  
+
   def create
-    @title = 'New Order'
     @order = Order.new(order_params)
-    
+
     if(@order.save)
       redirect_to @order
     else
       render 'new'
     end
   end
-  
+
   def edit
     @order = Order.find(params[:id])
     @title = "Edit Order N #{@order.id}" if @order
