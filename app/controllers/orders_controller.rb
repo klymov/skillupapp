@@ -8,14 +8,13 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
-    @title = "Order N #{@order.id}" if @order
+    @order = Order.find(params[:id]) rescue not_found
   end
 
   def create
     @order = Order.new(order_params)
 
-    if(@order.save)
+    if @order.save
       redirect_to @order
     else
       render 'new'
@@ -23,15 +22,13 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    @order = Order.find(params[:id])
-    @title = "Edit Order N #{@order.id}" if @order
+    @order = Order.find(params[:id]) rescue not_found
   end
 
   def update
-    @order = Order.find(params[:id])
-    @title = "Edit Order N #{@order.id}" if @order
+    @order = Order.find(params[:id]) rescue not_found
 
-    if(@order.update(order_params))
+    if @order.update(order_params)
       redirect_to @order
     else
       render 'edit'
@@ -39,7 +36,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order = Order.find(params[:id])
+    @order = Order.find(params[:id]) rescue not_found
     @order.destroy
     redirect_to orders_path
   end

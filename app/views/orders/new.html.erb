@@ -1,4 +1,4 @@
-@title = 'New Order'
+<% @title = 'New Order' %>
 <%= form_for :order, url: orders_path do |t| %>
   <% if @order.errors.any? %>
     <% @order.errors.full_messages.each do |msg| %>
