@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authorized
+  before_action :check_for_authorization_in_cache
   helper_method :logged_in?
   helper_method :current_user
   
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     !current_user.nil?  
   end
 
-  def authorized
+  def check_for_authorization_in_cache
     redirect_to '/welcome' unless logged_in?
   end
 

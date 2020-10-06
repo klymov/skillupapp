@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorized, only: [:new, :create, :welcome]
+  skip_before_action :check_for_authorization_in_cache, only: [:new, :create, :welcome]
 
   def new
   end
@@ -11,7 +11,10 @@ class SessionsController < ApplicationController
       redirect_to '/welcome'
     end
   end
-  
+
+  def logout
+  end
+
   def login
   end
 
