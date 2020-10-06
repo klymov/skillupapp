@@ -1,13 +1,5 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   skip_before_action :authorized, only: [:new, :create]
-
-  def index
-    @user = User.all
-  end
-
-  def show
-    @user = User.find(params[:id]) rescue not_found
-  end
 
   def new
     @user = User.new
@@ -19,8 +11,16 @@ class UserController < ApplicationController
     redirect_to '/welcome'
   end
 
+  def index
+    @user = User.all
+  end
+
+  def show
+    @user = User.find(params[:id]) rescue not_found
+  end
+
   private
-  def user_params
-    params.require(:user).permit(:username, :password, :role, :phone, :email)
+  def order_params
+    params.require(:order).permit(:email, :phone, :description)
   end
 end
