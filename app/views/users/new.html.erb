@@ -1,9 +1,22 @@
-<h1>New User</h1>
-<%= form_for @user do |f|%>
-  <%= f.label :user_name%><br>
-  <%= f.text_field :username%><br>
-  <%= f.label :pass_word%><br>
-  <%= f.text_field :password%><br>
-
-  <%= f.submit %>
-<%end%>
+<% @title = 'Sign Up' %>
+<div class="col-md-6 col-md-offset-3">
+  <%= form_for @user do |f|%>
+    <p>
+      <%= f.label :user_name%><br>
+      <%= f.text_field :username%><br>
+    </p>
+    <p>
+      <%= f.label :email%><br>
+      <%= f.text_field :email%><br>
+    </p>
+    <p>
+      <%= f.label :pass_word%><br>
+      <%= f.password_field :password, class: 'form-control' %>
+    </p>
+    <p>
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+    </p>
+    <%= f.submit "Create my account", class: "btn btn-primary" %>
+  <%end%>
+</div>

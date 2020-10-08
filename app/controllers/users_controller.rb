@@ -4,9 +4,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(params.require(:user).permit(:username, :password, :role, :email, :phone, :description))
+    @user = User.create(params.require(:user).permit(:username, :password_digest, :role, :email, :phone, :description))
     session[:user_id] = @user.id
-    redirect_to '/welcome'
   end
 
   def index
@@ -36,6 +35,6 @@ class UsersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:username, :password, :role, :email, :phone, :description)
+    params.require(:order).permit(:username, :password_digest, :role, :email, :phone, :description)
   end
 end

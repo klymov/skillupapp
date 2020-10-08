@@ -19,13 +19,13 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Users</a>
         <div class="dropdown-menu">
-          <%= link_to  "New user", new_user_path, :class => 'dropdown-item' %>
+          <%= link_to  "New user", signup_path, :class => 'dropdown-item' %>
           <div class="dropdown-divider"></div>
           <%= link_to  "All users", users_path, :class => 'dropdown-item' %>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <%= link_to  "Logout", logout_path, :class => 'nav-link' %>
       </li>
     </ul>
   </div>

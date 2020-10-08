@@ -6,13 +6,17 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(username: params[:username])
-    if user && user.authenticate(params[:password])
+    if user & user.authenticate(params[:password_digest])
       sessions[:user_id] = user.id
-      redirect_to '/welcome'
+      # redirect_to '/welcome'
+    else
+      flash[:danger] = 'Invalid email/password combination'
+      render 'new'
     end
   end
 
-  def logout
+  def destroy
+    redirect_to '/welcome'
   end
 
   def welcome
