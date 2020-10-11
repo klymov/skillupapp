@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
   end
 
   def check_for_authorization_in_cache
-    redirect_to '/welcome' unless logged_in?
+    # remake. shouldn't fire when user registration
+    # redirect_to '/welcome' unless logged_in?
   end
 
   def not_found

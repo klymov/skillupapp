@@ -1,1 +1,3 @@
-<% @title = "User #{@user.name} N #{@user.id}, #{@user.email} " if @user %>
+<% @title = "User #{@user.username} N #{@user.id}" if @user %>
+
+<p><%= "#{@user.email} " if @user %></p>

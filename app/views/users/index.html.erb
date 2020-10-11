@@ -2,6 +2,6 @@
 <% @user.each do |t| %>
   <div class="jumbotron">
     <h2><%= t.username %> (N <%= t.id %>)</h2>
-    <%= link_to "More details", users_path(t), :class => 'btn btn-outline-primary' %>
+    <%= link_to "More details", user_path(t), :class => 'btn btn-outline-primary' %>
   </div>
 <% end %>

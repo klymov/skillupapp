@@ -4,8 +4,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(params.require(:user).permit(:username, :password_digest, :role, :email, :phone, :description))
+    @user = User.new(user_params)
     session[:user_id] = @user.id
+    if @user.save
+      log_in @user
+      flash[:success] = "Welcome to the Sample App!"
+      redirect_to @user
+    else
+      render 'new'
+    end
   end
 
   def index
@@ -34,7 +41,8 @@ class UsersController < ApplicationController
   end
 
   private
-  def order_params
-    params.require(:order).permit(:username, :password_digest, :role, :email, :phone, :description)
+  def user_params
+    params.require(:user).permit(:username, :password, :password_confirmation, :role, :email, :phone, :description)
+    # params.require(:user).permit(:username, :password_digest, :role, :email, :phone, :description)
   end
 end
