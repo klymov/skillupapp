@@ -1,3 +1,16 @@
-<% @title = "User #{@user.username} N #{@user.id}" if @user %>
+<% if @user %>
+  <% @title = "#{@user.username}" %>
 
-<p><%= "#{@user.email} " if @user %></p>
+  <div class="card">
+    <div class="card-header">
+      <%= "User N #{@user.id}" %>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">E-mail: <%= "#{@user.email} " %></h5>
+      <p class="card-text">Phone: <%= "#{@user.phone if @user.phone} " %><br>
+      Role: <%= "#{@user.role if @user.role} " %><br>
+      Note: <%= "#{@user.description if @user.description} " %></p>
+      <%= link_to "Edit profile", edit_user_path, :class => 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

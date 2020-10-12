@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include SessionsHelper
   def new
     @user = User.new
   end
@@ -8,7 +9,7 @@ class UsersController < ApplicationController
     session[:user_id] = @user.id
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Welcome to the SkillUpApp!"
       redirect_to @user
     else
       render 'new'
@@ -33,8 +34,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     not_found if @user.nil?
 
-    if @user.update(order_params)
-      redirect_to @order
+    if @user.update(user_params)
+      redirect_to @user
     else
       render 'edit'
     end
@@ -42,7 +43,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :role, :email, :phone, :description)
-    # params.require(:user).permit(:username, :password_digest, :role, :email, :phone, :description)
+    params.require(:user).permit(:username, :password, :password_confirmation, :email, :role, :phone, :description)
   end
 end
