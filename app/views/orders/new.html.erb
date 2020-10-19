@@ -6,14 +6,14 @@
     <% end %>
   <% end %>
 
-  <p>
-    <%= t.label :username %><br>
-    <%= t.text_field(:login, {:class => 'form-control'}) %>
-  </p>
-  <p>
-    <%= t.label :phone_number %><br>
-    <%= t.phone_field(:phone, {:class => 'form-control'}) %>
-  </p>
+  <%
+=begin%>
+ <p>
+    <%= t.label :passenger %><br>
+    <%= t.text_field (:passenger, {:class => 'form-control'}) %>
+  </p> 
+<%
+=end%>
   <p>
     <%= t.label :order_description %><br>
     <%= t.text_area(:description, {:class => 'form-control'}) %>

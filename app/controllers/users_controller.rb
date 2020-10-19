@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  include SessionsHelper
   def new
+    authorize!
     @user = User.new
   end
 
@@ -21,17 +21,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    # logged_in?
+    @user = User.find_by_id(params[:id])
     not_found if @user.nil?
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find_by_id(params[:id])
     not_found if @user.nil?
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find_by_id(params[:id])
     not_found if @user.nil?
 
     if @user.update(user_params)

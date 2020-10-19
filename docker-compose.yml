@@ -18,6 +18,8 @@ services:
     env_file: .env
     links:
       - db
+    stdin_open: true
+    tty: true
 
   db:
     image: postgres:13

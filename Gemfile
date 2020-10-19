@@ -17,8 +17,12 @@ gem 'dotenv-rails'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
+gem 'pry', '~> 0.13.1'
+
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-rails'
 end
 
 group :development do
@@ -33,3 +37,4 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "action_policy", "~> 0.5.0"
