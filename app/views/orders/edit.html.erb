@@ -1,3 +1,4 @@
+<% @title = "Edit Order N #{@order.id}" if @order %>
 <%= form_for :order, url: order_path(@order), method: :patch do |t| %>
   <% if @order.errors.any? %>
     <% @order.errors.full_messages.each do |msg| %>
