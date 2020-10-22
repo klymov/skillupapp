@@ -4,7 +4,8 @@ class OrdersController < ApplicationController
   end
 
   def new
-    authorize! Order.new, context: { user: @current_user } # 
+    # binding.pry
+    authorize! Order.new, context: { user: @current_user } #
     OrderPolicy.new(user: @current_user).allowed_to?(:new?) #
 
     @order = Order.new
@@ -50,6 +51,6 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:login, :phone, :description)
+    params.require(:order).permit(:passenger, :drive, :stage, :description)
   end
 end

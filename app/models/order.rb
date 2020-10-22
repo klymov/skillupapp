@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
-  has_one :user
-  validates :login, presence: true, length: { minimum: 3, maximum: 21 }
-  validates :phone, presence: true, length: { minimum: 12, maximum: 12 }
+  belongs_to :user
+  # validates :login, presence: true, length: { minimum: 3, maximum: 21 }
+  # validates :phone, presence: true, length: { minimum: 12, maximum: 12 }
   validates :description, presence: true, length: { minimum: 5, maximum: 128 }
 end

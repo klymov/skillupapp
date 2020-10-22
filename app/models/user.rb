@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  belongs_to :order
+  has_one :order
   # attr_accessor :username, :password, :role, :email, :phone, :description
   # :avatar, :avto_id
   has_secure_password
