@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  helper_method :progression
   def index
     @order = Order.all
   end
@@ -47,6 +48,16 @@ class OrdersController < ApplicationController
     not_found if @order.nil?
     @order.destroy
     redirect_to orders_path
+  end
+
+  def progression
+    @order = Order.find_by_id(params[:id])
+    not_found if @order.nil?
+    if @order.status.max > @order.status
+      @order.status += 1
+      @order.save
+    end
+    redirect_to @order
   end
 
   private

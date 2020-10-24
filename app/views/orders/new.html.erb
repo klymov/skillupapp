@@ -5,15 +5,6 @@
       <div class="alert alert-danger"><%= msg %></div>
     <% end %>
   <% end %>
-
-  <%
-=begin%>
- <p>
-    <%= t.label :passenger %><br>
-    <%= t.text_field (:passenger, {:class => 'form-control'}) %>
-  </p> 
-<%
-=end%>
   <p>
     <%= t.label :order_description %><br>
     <%= t.text_area(:description, {:class => 'form-control'}) %>

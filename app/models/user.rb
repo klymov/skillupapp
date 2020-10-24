@@ -1,11 +1,6 @@
 class User < ApplicationRecord
   has_many :order
-  # attr_accessor :username, :password, :role, :email, :phone, :description
-  # :avatar, :avto_id
   has_secure_password
-
-  # TODO:
-  # before_save { self.email = email.downcase }
 
   validates :username, presence: true, length: { minimum: 3, maximum: 21 }
 

@@ -1,8 +1,10 @@
 <% @title = "Order N #{@order.id}" %>
 
-<h1><%= @order.login %></h1>
-<h2><%= @order.phone %></h2>
+<h1><%= @order.passenger_id %></h1>
+<h2>Status: <%= @order.status %></h2>
 <p><%= @order.description %></p>
+<p>Passenger: <%= @order.passenger_id %></p>
 <hr>
 <%= link_to "Edit order", edit_order_path(@order), :class => 'btn btn-warning' %>
+<%= link_to "Next status", progression_order_path(@order), :class => 'btn btn-success' %>
 <%= link_to "Delete order", order_path(@order), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
