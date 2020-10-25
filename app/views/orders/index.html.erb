@@ -1,7 +1,9 @@
 <% @title = 'All orders' %>
 <% @order.each do |t| %>
   <div class="jumbotron">
-    <h2><%= t.login %> (<%= t.phone %>)</h2>
+    <h2>Orders N <%= t.id %></h2>
+    <p><%= t.description %></p>
     <%= link_to "More details", order_path(t), :class => 'btn btn-outline-primary' %>
   </div>
+  <hr>
 <% end %>

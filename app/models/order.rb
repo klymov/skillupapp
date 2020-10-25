@@ -4,7 +4,7 @@ class Order < ApplicationRecord
   # through passenger_id
   has_many :users, class_name: "user", foreign_key: "driver_id"
 
-  enum status: [:new_order, :taken, :in_progress, :completed]
+  enum status: [:new_order, :assigned, :in_progress, :completed]
 
   # validates :login, presence: true, length: { minimum: 3, maximum: 21 }
   # validates :phone, presence: true, length: { minimum: 12, maximum: 12 }

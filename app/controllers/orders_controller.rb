@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  helper_method :progression
+  # helper_method :progression
   def index
     @order = Order.all
   end
@@ -50,18 +50,19 @@ class OrdersController < ApplicationController
     redirect_to orders_path
   end
 
-  def progression
+  def assignment
     @order = Order.find_by_id(params[:id])
     not_found if @order.nil?
-    if @order.status.max > @order.status
-      @order.status += 1
-      @order.save
-    end
+    @order.update(order_status)
     redirect_to @order
   end
 
   private
   def order_params
-    params.require(:order).permit(:passenger, :drive, :stage, :description)
+    params.require(:order).permit(:passenger, :drive, :status, :description)
+  end
+
+  def order_status
+    params.permit(:status)
   end
 end

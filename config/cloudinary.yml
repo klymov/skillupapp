@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: gtpoapr
+  api_key: '842655177276473'
+  api_secret: 1_EKo-370MUaTcY_UAivTc9UUJ8
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: gtpoapr
+  api_key: '842655177276473'
+  api_secret: 1_EKo-370MUaTcY_UAivTc9UUJ8
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: gtpoapr
+  api_key: '842655177276473'
+  api_secret: 1_EKo-370MUaTcY_UAivTc9UUJ8
+  enhance_image_tag: true
+  static_file_support: false
