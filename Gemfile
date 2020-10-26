@@ -38,3 +38,4 @@ end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "action_policy", "~> 0.5.0"
+gem 'cloudinary'
