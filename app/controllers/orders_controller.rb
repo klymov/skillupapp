@@ -61,6 +61,16 @@ class OrdersController < ApplicationController
     end
   end
 
+  def performed
+    @order = Order.find_by_id(params[:id])
+    not_found if @order.nil?
+    if @order.update(order_status)
+      redirect_to @order
+    else
+      render 'index'
+    end
+  end
+
 
   private
   def order_params
