@@ -6,5 +6,5 @@
 <p>Passenger: <%= @order.passenger_id %></p>
 <hr>
 <%= link_to "Edit order", edit_order_path(@order), :class => 'btn btn-warning' %>
-<%= link_to "Next status", progression_order_path(@order), :class => 'btn btn-success' %>
+<%= link_to "Assign order", assignment_path(id: @order.id, status: :assigned), method: :put, :class => 'btn btn-success' %>
 <%= link_to "Delete order", order_path(@order), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>

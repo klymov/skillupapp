@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :users
+  put 'assignment', to: 'orders#assignment'
+
   resources :orders
   root 'sessions#welcome', as: 'home'
   get 'signup',    to: 'users#new'
