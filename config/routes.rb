@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  put 'assignment', to: 'orders#assignment'
   resources :users
   put 'assignment', to: 'orders#assignment'
-
+  put 'performed', to: 'orders#performed'
   resources :orders
   root 'sessions#welcome', as: 'home'
 
@@ -12,5 +11,5 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   get 'welcome',   to: 'sessions#welcome'
   # get 'authorized', to: 'sessions#page_requires_login'
-
+  get '/avatars/', to: redirect('/assets/images/avatars/')
 end

@@ -1,6 +1,4 @@
 class OrdersController < ApplicationController
-  
-
   def index
     @order = Order.all
   end
@@ -54,7 +52,7 @@ class OrdersController < ApplicationController
   def assignment
     @order = Order.find_by_id(params[:id])
     not_found if @order.nil?
-    if @order.update(order_status)
+    if @order.update(status: :assigned)
       redirect_to @order
     else
       render 'index'
@@ -64,13 +62,12 @@ class OrdersController < ApplicationController
   def performed
     @order = Order.find_by_id(params[:id])
     not_found if @order.nil?
-    if @order.update(order_status)
+    if @order.update(status: :in_progress)
       redirect_to @order
     else
       render 'index'
     end
   end
-
 
   private
   def order_params

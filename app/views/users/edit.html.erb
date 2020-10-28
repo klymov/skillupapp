@@ -7,6 +7,11 @@
       <% end %>
     <% end %>
 
+    <div class="field">
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar %>
+    </div>
+    
     <div class="form-label-group">
       <%= f.label :user_name%><br>
       <%= f.text_field :username, class: 'form-control'%>
@@ -23,16 +28,6 @@
       <%= f.label :password_confirmation, "Confirmation" %><br>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
     </div>
-
-    <%
-=begin%>
- <div class="form-label-group">
-      <%= f.label :role%><br>
-      <%= f.select :role, ['passenger', 'drive'], {:selected=> 'passenger'}, :class => "form-control" %>
-    </div> 
-<%
-=end%>
-
     <div class="form-label-group">
       <%= f.label :phone%><br>
       <%= f.text_field :phone, class: 'form-control'%>
