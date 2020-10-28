@@ -4,32 +4,23 @@
   <div class="card mb-3" style="max-width: 540px;">
     <div class="row no-gutters">
       <div class="col-md-4">
-        <%#= image_tag "#{@avatar}", :class => "card-img" %>
-        <img src="/<%= "#{@avatar}" %>" class="card-img" alt="<%= "..." %>">
+        <%= image_tag ("/avatars/ihor2_gm_c0m.png") %>
+        <img src="<%#= "#{@user.avatar}" %>" class="card-img" alt="<%= "..." %>">
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <h5 class="card-title"><%= "Card User N #{@user.id}" %></h5>
+          <p class="card-text">
+            E-mail: <%= "#{@user.email} " %><br>
+            Phone: <%= "#{@user.phone if @user.phone} " %><br>
+            Note: <%= "#{@user.description if @user.description} " %><br>
+            <small class="text-muted">Role: <%= "#{@user.role if @user.role} " %></small>
+          </p>
+          <p class="card-text">
+            <%= link_to "Edit profile", edit_user_path, :class => 'btn btn-primary' %>
+          </p>
         </div>
       </div>
-    </div>
-  </div>
-
-
-
-
-  <div class="card">
-    <div class="card-header">
-      <%= "User N #{@user.id}" %>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">E-mail: <%= "#{@user.email} " %></h5>
-      <p class="card-text">Phone: <%= "#{@user.phone if @user.phone} " %><br>
-      Role: <%= "#{@user.role if @user.role} " %><br>
-      Note: <%= "#{@user.description if @user.description} " %></p>
-      <%= link_to "Edit profile", edit_user_path, :class => 'btn btn-primary' %>
     </div>
   </div>
 <% end %>
