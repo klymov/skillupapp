@@ -73,8 +73,4 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:passenger, :driver, :status, :description)
   end
-
-  def order_status
-    params.permit(:id, :status)
-  end
 end

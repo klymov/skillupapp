@@ -4,8 +4,9 @@
   <div class="card mb-3" style="max-width: 540px;">
     <div class="row no-gutters">
       <div class="col-md-4">
-        <%= image_tag ("/avatars/ihor2_gm_c0m.png") %>
-        <img src="<%#= "#{@user.avatar}" %>" class="card-img" alt="<%= "..." %>">
+        <%= cl_image_tag("skillupapp/user/#{@user.avatar}", format: :png,
+          #:gravity=>"faces", :crop=>"fill",
+          :width => 160, :height => 200) %>
       </div>
       <div class="col-md-8">
         <div class="card-body">
