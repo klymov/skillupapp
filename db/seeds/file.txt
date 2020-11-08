@@ -1,0 +1,3 @@
+UKR|Ukrainin
+USA|Union stats
+BEL|Belarus
