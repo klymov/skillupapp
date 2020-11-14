@@ -5,7 +5,7 @@
     <div class="row no-gutters">
       <div class="col-md-4">
         <%= cl_image_tag("skillupapp/user/#{@user.avatar}", format: :png,
-          #:gravity=>"faces", :crop=>"fill",
+          :gravity=>"faces", :crop=>"fill",
           :width => 160, :height => 200) %>
       </div>
       <div class="col-md-8">
@@ -15,7 +15,8 @@
             E-mail: <%= "#{@user.email} " %><br>
             Phone: <%= "#{@user.phone if @user.phone} " %><br>
             Note: <%= "#{@user.description if @user.description} " %><br>
-            <small class="text-muted">Role: <%= "#{@user.role if @user.role} " %></small>
+            <% if @current_user.role == 1 then role = "driver" else role = "passenger" end %>
+            <small class="text-muted">Role: <%= role %></small>
           </p>
           <p class="card-text">
             <%= link_to "Edit profile", edit_user_path, :class => 'btn btn-primary' %>

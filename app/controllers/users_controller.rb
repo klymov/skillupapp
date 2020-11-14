@@ -2,17 +2,18 @@ class UsersController < ApplicationController
   LOCAL_PATH = "app/assets/images/avatars"
 
   def new
+    @cities_collection = City.all.collect { |p| [ p.city, p.id ] }
     @user = User.new
   end
 
   def create
     @user = User.new(user_params)
-    # binding.pry
     if @user.save
       session[:user_id] = @user.id
       log_in @user
       redirect_to @user
     else
+      @cities_collection = City.all.collect { |p| [ p.city, p.id ] }
       render 'new'
     end
   end
@@ -28,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @cities_collection = City.all.collect { |p| [ p.city, p.id ] }
     @user = User.find_by_id(params[:id])
     not_found if @user.nil?
   end

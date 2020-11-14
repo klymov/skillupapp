@@ -1,4 +1,4 @@
 class City < ApplicationRecord
   has_many :users
-  belongs_to :countries
+  belongs_to :country
 end

@@ -1,7 +1,8 @@
 <% @title = 'Welcome' %>
 
 <% if @current_user %>
-  <h2>You are logged in as <%= @current_user.role %> <%= @current_user.username %></h2>
+  <% if @current_user.role == 1 then role = "driver" else role = "passenger" end %>
+  <h2>You are logged in as <%= @current_user.username %> <%= role %> </h2>
 <% else %>
   <p>New user? <%= link_to 'Sign up now!', signup_path %></p>
 <% end %>

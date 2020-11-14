@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :orders
-  belongs_to :cities
+  belongs_to :city
   has_secure_password
 
   validates :username, presence: true, length: { minimum: 3, maximum: 21 }

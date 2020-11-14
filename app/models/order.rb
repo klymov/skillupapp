@@ -1,3 +1,15 @@
+    User
+     /\
+ City   Countries
+
+
+ User
+|
+City
+|
+Country
+
+
 class Order < ApplicationRecord
   enum status: [:new_order, :assigned, :in_progress, :completed]
 
