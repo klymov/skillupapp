@@ -7,8 +7,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    session[:user_id] = @user.id
+    # binding.pry
     if @user.save
+      session[:user_id] = @user.id
       log_in @user
       redirect_to @user
     else
@@ -39,7 +40,7 @@ class UsersController < ApplicationController
     # File.open("#{LOCAL_PATH}/#{filename}.#{expansion}", 'wb') { |f| f.write(params[:user][:avatar].read) }
     # url_cloudinary = Cloudinary::Uploader.upload("#{LOCAL_PATH}/#{filename}.#{expansion}", folder: 'skillupapp/user')
     # binding.pry
-
+    
     File.open("#{LOCAL_PATH}/#{filename}.png", 'wb') { |f| f.write(params[:user][:avatar].read) }
     url_cloudinary = Cloudinary::Uploader.upload("#{LOCAL_PATH}/#{filename}.png", folder: 'skillupapp/user')
     params[:user][:avatar] = url_cloudinary["public_id"].split("/").last
@@ -53,6 +54,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :avatar, :email, :role, :phone, :description)
+    params.require(:user).permit(:username, :password, :password_confirmation, :avatar, :email, :role, :city_id, :phone, :description)
   end
 end

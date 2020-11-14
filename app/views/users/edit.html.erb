@@ -36,6 +36,9 @@
       <%= f.label :description%><br>
       <%= f.text_field :description, class: 'form-control'%>
     </div>
+    <div class="form-label-group">
+      <%= select("user", "city_id", City.all.collect { |p| [ p.city, p.id ] }) %>
+    </div>
     <br>
     <%= f.submit "Create my account", class: "btn btn-lg btn-primary btn-block" %>
   <%end%>

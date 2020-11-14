@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_26_193944) do
+ActiveRecord::Schema.define(version: 2020_11_10_185557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,21 @@ ActiveRecord::Schema.define(version: 2020_10_26_193944) do
     t.string "color"
     t.date "production_date"
     t.string "body_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.bigint "country_id"
+    t.string "city"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_cities_on_country_id"
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "country"
+    t.string "code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -38,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_10_26_193944) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
-    t.text "role", default: "0"
+    t.integer "role", default: 0
     t.string "phone"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
@@ -46,6 +61,7 @@ ActiveRecord::Schema.define(version: 2020_10_26_193944) do
     t.string "description"
     t.integer "car_id"
     t.string "avatar"
+    t.integer "city_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
