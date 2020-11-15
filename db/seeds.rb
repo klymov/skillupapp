@@ -10,18 +10,36 @@
 # User.where(role: "1").update_all(avatar: nil)
 
 
+# descriotion
+# query
+
+#description
+# q
+
 ## select_user_city_country
   # User.select('users.username, cities.city, cities.country').joins(city: :country)
 
 
 ## notesting add "+38" for Ukrainians
-  # ukrainian_numbers = User.select('users.phone, country.country').joins(:city).where(country: 'Ukraine')
-  # ukrainian_numbers.each do |i|
-  #   if i.last == 'Ukraine'
-  #     "+38 #{i.first}"
-  #   else
-  #     "#{i.first}"
-  #   end
+# User: [users.phone, cities.city]
+
+
+
+# SELECT column1, columns 2 FROM (JOINS table 1 JOIN table 2 ....) as my_table
+
+# ukrainian_numbers = User.select('users.phone, countries.country').joins(city: :country).where(country: 'Ukraine')
+
+# # service objects
+
+# # ukrainian_numbers = User.joins(:city).select('phone, cities.city').where(city: 'Chernivtsi').to_a
+
+# ukrainian_numbers.each do |i|
+#   if i.last == 'Ukraine'
+#     puts "+38 #{i.first}"
+#   else
+#     puts "#{i.first}"
+#   end
+# end
 
 # country.cities.create(city: 'association city')
 
@@ -31,13 +49,29 @@
 # countries_map = {"Ukraine"=> {code: "UA", cities: ["Kiiv", "Kharkiv", "Chernivtsi"]}, "Austria" => {code: "AU", cities: ["Viena", "Zalzburg"]}}
 # countries_map.each{ |country_name, country_data|
 #   @country = Country.create([country: country_name, code: country_data.first[1], created_at: Time.now.utc.iso8601, updated_at: Time.now.utc.iso8601])
-#   @country.each{ |country|
+#   @country.each do |country|
 #     country_data[:cities].each{ |city_name|
 #       City.insert_all([city: city_name, country_id: country.id, created_at: Time.now.utc.iso8601, updated_at: Time.now.utc.iso8601])
 #     }
-#   }
+#   end
 # }
 
+
+# users_map = {
+#   "Ihor"=> {code: "UA", city: "Kiiv", role: 0},
+#   "Ihor2"=> {code: "UA", city: "Kharkiv", role: 1},
+# }
+# users_map.each{ |user_name, user_data|
+#     User.insert_all([
+#       username: user_name,
+#       password_digest: "fwfwfefesdsd",
+#       role: user_data[:role],
+#       created_at: Time.now.utc.iso8601,
+#       updated_at: Time.now.utc.iso8601,
+#       city_id: 3
+# city: user_data[:city]
+#     ])
+# }
 
 # Try to do custom sql from rails c
 
