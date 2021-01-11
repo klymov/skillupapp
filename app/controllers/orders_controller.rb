@@ -49,8 +49,28 @@ class OrdersController < ApplicationController
     redirect_to orders_path
   end
 
+  def assignment
+    @order = Order.find_by_id(params[:id])
+    not_found if @order.nil?
+    if @order.update(status: :assigned)
+      redirect_to @order
+    else
+      render 'index'
+    end
+  end
+
+  def performed
+    @order = Order.find_by_id(params[:id])
+    not_found if @order.nil?
+    if @order.update(status: :in_progress)
+      redirect_to @order
+    else
+      render 'index'
+    end
+  end
+
   private
   def order_params
-    params.require(:order).permit(:passenger, :drive, :stage, :description)
+    params.require(:order).permit(:passenger, :driver, :status, :description)
   end
 end

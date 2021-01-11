@@ -7,6 +7,13 @@
       <% end %>
     <% end %>
 
+    <%#= render "application/form_label_group_new", locals: { f: f } %>
+
+    <div class="field">
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar %>
+    </div>
+    
     <div class="form-label-group">
       <%= f.label :user_name%><br>
       <%= f.text_field :username, class: 'form-control'%>
@@ -23,16 +30,6 @@
       <%= f.label :password_confirmation, "Confirmation" %><br>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
     </div>
-
-    <%
-=begin%>
- <div class="form-label-group">
-      <%= f.label :role%><br>
-      <%= f.select :role, ['passenger', 'drive'], {:selected=> 'passenger'}, :class => "form-control" %>
-    </div> 
-<%
-=end%>
-
     <div class="form-label-group">
       <%= f.label :phone%><br>
       <%= f.text_field :phone, class: 'form-control'%>
@@ -40,6 +37,10 @@
     <div class="form-label-group">
       <%= f.label :description%><br>
       <%= f.text_field :description, class: 'form-control'%>
+    </div>
+    <div class="form-label-group">
+      <%= f.label :city%><br>
+      <%= f.select :city_id, @cities_collection, {:selected=> @cities_collection.first}, :class => "form-control" %>
     </div>
     <br>
     <%= f.submit "Create my account", class: "btn btn-lg btn-primary btn-block" %>

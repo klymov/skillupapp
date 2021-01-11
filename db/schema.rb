@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_14_142200) do
+ActiveRecord::Schema.define(version: 2020_11_10_185557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,26 +26,42 @@ ActiveRecord::Schema.define(version: 2020_10_14_142200) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.bigint "country_id"
+    t.string "city"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_cities_on_country_id"
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "country"
+    t.string "code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "orders", force: :cascade do |t|
+    t.integer "passenger_id"
+    t.integer "driver_id"
+    t.integer "status", default: 0
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "stage"
-    t.integer "passenger"
-    t.integer "drive"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
-    t.text "role"
+    t.integer "role", default: 0
     t.string "phone"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
-    t.boolean "admin", default: false
     t.integer "car_id"
+    t.string "avatar"
+    t.integer "city_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

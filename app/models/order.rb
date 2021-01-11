@@ -1,6 +1,20 @@
+    User
+     /\
+ City   Countries
+
+
+ User
+|
+City
+|
+Country
+
+
 class Order < ApplicationRecord
-  belongs_to :user
-  # validates :login, presence: true, length: { minimum: 3, maximum: 21 }
-  # validates :phone, presence: true, length: { minimum: 12, maximum: 12 }
+  enum status: [:new_order, :assigned, :in_progress, :completed]
+
+  has_one :passenger, class_name: "User", foreign_key: "passanger_id"
+  has_one :driver, class_name: "User", foreign_key: "driver_id"
+
   validates :description, presence: true, length: { minimum: 5, maximum: 128 }
 end
